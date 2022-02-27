@@ -1,5 +1,10 @@
 {
-  "extends": ["airbnb", "airbnb/hooks", "next/core-web-vitals"],
+  "extends": [
+    "eslint-config-airbnb-base",
+    "airbnb/rules/react",
+    "airbnb/hooks",
+    "next/core-web-vitals"
+  ],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "react/function-component-definition": [0],
