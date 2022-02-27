@@ -12,7 +12,7 @@ yarn dev
 
 ## Configuring Firebase
 
-To run the app you will need to create a Firebase account and create a `.env.local` file with your env settings
+To run the app you will need to create a Firebase account and rename `.env.local.sample` to `.env.local` and update the file with your app keys from Firebase
 
 ```
 NEXT_PUBLIC_FIREBASE_API_KEY=<your key>
