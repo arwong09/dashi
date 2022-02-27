@@ -2,24 +2,29 @@
 import { Fragment, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import Link from 'next/link'
 import { UserContext } from '../pages/_app'
 import auth from '../utils/initializeFirebase'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 const SignUpButton = () => (
   <>
-    <button
-      className="mr-8 relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-    >
-      <span>Sign in</span>
-    </button>
-    <button
-      className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-    >
-      <span>Sign up</span>
-    </button>
+    <Link href="/login">
+      <button
+        type="button"
+        className="mr-8 relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        <span>Login</span>
+      </button>
+    </Link>
+
+    <Link href="/signup">
+      <button
+        type="button"
+        className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        <span>Sign up</span>
+      </button>
+    </Link>
   </>
 
 )

@@ -1,13 +1,13 @@
 import NextImage from 'next/image'
-import Link from 'next/link'
-import useSignup from '../hooks/useSignup'
 import LoadingSpinner from './LoadingSpinner'
 import ErrorNotification from './ErrorNotification'
+import useLogin from '../hooks/useLogin'
+import SuccessNotification from './SuccessNotification'
 
-const SignUp = () => {
+const Login = () => {
   const {
-    onEmailChange, emailValue, onPasswordChange, passwordValue, onSubmit, isLoading, error,
-  } = useSignup()
+    onEmailChange, emailValue, onPasswordChange, passwordValue, onSubmit, isLoading, error, onResetPassword, successMessage,
+  } = useLogin()
 
   return (
     <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50">
@@ -20,14 +20,7 @@ const SignUp = () => {
             alt="Workflow"
           />
         </div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up</h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Or
-          {' '}
-          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-            start your 14-day free trial
-          </a>
-        </p>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login to your account</h2>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -71,12 +64,9 @@ const SignUp = () => {
 
             <div className="flex items-center justify-between">
               <div className="text-sm">
-                Already have an account?
-                <Link href="/login">
-                  <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
-                  &nbsp;Login
-                  </button>
-                </Link>
+                <button type="button" onClick={onResetPassword} className="font-medium text-indigo-600 hover:text-indigo-500">
+                  Reset your password
+                </button>
               </div>
             </div>
 
@@ -86,17 +76,18 @@ const SignUp = () => {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300"
               >
-                {isLoading ? <LoadingSpinner /> : 'Sign up'}
+                {isLoading ? <LoadingSpinner /> : 'Login'}
               </button>
             </div>
           </form>
         </div>
         <div className="mt-6">
           {error && <ErrorNotification error={error} />}
+          {successMessage && <SuccessNotification message={successMessage} />}
         </div>
       </div>
     </div>
   )
 }
 
-export default SignUp
+export default Login
