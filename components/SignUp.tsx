@@ -2,8 +2,9 @@ import NextImage from 'next/image'
 import useSignup from '../hooks/useSignup'
 import LoadingSpinner from './LoadingSpinner'
 import ErrorBanner from './ErrorBanner'
+import withNavLayout from '../layouts/withNavLayout'
 
-export default function SignUp() {
+const SignUp = () => {
   const {
     onEmailChange, emailValue, onPasswordChange, passwordValue, onSubmit, isLoading, error,
   } = useSignup()
@@ -95,3 +96,5 @@ export default function SignUp() {
     </div>
   )
 }
+
+export default withNavLayout(SignUp)
