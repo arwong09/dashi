@@ -11,11 +11,14 @@ export default function SignUp() {
   return (
     <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <NextImage
-          className="mx-auto h-12 w-auto"
-          src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-          alt="Workflow"
-        />
+        <div className="w-12 h-12 mx-auto relative">
+          <NextImage
+            layout="fill"
+            className="mx-auto"
+            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+            alt="Workflow"
+          />
+        </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up</h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Or
