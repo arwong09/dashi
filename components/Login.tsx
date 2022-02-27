@@ -1,4 +1,5 @@
 import NextImage from 'next/image'
+import Link from 'next/link'
 import LoadingSpinner from './LoadingSpinner'
 import ErrorNotification from './ErrorNotification'
 import useLogin from '../hooks/useLogin'
@@ -12,7 +13,7 @@ const Login = () => {
   return (
     <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="w-12 h-12 mx-auto relative">
+        <div className="w-12 h-12 relative ml-2">
           <NextImage
             layout="fill"
             className="mx-auto"
@@ -20,11 +21,11 @@ const Login = () => {
             alt="Workflow"
           />
         </div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login to your account</h2>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <h2 className="mb-8 text-2xl font-extrabold text-gray-700">Login to your account</h2>
           <form className="space-y-6" onSubmit={onSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -62,10 +63,10 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-end">
               <div className="text-sm">
                 <button type="button" onClick={onResetPassword} className="font-medium text-indigo-600 hover:text-indigo-500">
-                  Reset your password
+                  Forgot your password?
                 </button>
               </div>
             </div>
@@ -80,6 +81,11 @@ const Login = () => {
               </button>
             </div>
           </form>
+        </div>
+        <div className="mt-6 ml-2 text-sm text-gray-700">
+          Dont have an account?
+          {' '}
+          <Link href="signup"><a className="text-indigo-600 hover:text-indigo-500">Sign up</a></Link>
         </div>
         <div className="mt-6">
           {error && <ErrorNotification error={error} />}

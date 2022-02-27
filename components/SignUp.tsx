@@ -12,7 +12,7 @@ const SignUp = () => {
   return (
     <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="w-12 h-12 mx-auto relative">
+        <div className="w-12 h-12 ml-2 relative">
           <NextImage
             layout="fill"
             className="mx-auto"
@@ -20,18 +20,11 @@ const SignUp = () => {
             alt="Workflow"
           />
         </div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up</h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Or
-          {' '}
-          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-            start your 14-day free trial
-          </a>
-        </p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <h2 className="mb-8 text-2xl font-extrabold text-gray-700">Create your Menu Zest account</h2>
           <form className="space-y-6" onSubmit={onSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -69,17 +62,6 @@ const SignUp = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="text-sm">
-                Already have an account?
-                <Link href="/login">
-                  <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
-                  &nbsp;Login
-                  </button>
-                </Link>
-              </div>
-            </div>
-
             <div>
               <button
                 disabled={isLoading}
@@ -88,6 +70,16 @@ const SignUp = () => {
               >
                 {isLoading ? <LoadingSpinner /> : 'Sign up'}
               </button>
+            </div>
+            <div className="flex items-center justify-center text-gray-700">
+              <div className="text-sm">
+                Have an account?
+                <Link href="/login">
+                  <button type="button" className=" text-indigo-600 hover:text-indigo-500">
+                  &nbsp;Sign in
+                  </button>
+                </Link>
+              </div>
             </div>
           </form>
         </div>
