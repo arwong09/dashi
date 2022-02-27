@@ -9,3 +9,17 @@ To run the development server:
 ```
 yarn dev
 ```
+
+## Configuring Firebase
+
+To run the app you will need to create a Firebase account and create a `.env.local` file with your env settings
+
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=<your key>
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=<your key>
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=<your key>
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=<your key>
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=<your key>
+NEXT_PUBLIC_FIREBASE_APP_ID=<your key>
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=<your key>
+```
