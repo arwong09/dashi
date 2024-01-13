@@ -1,5 +1,5 @@
-// import { XCircleIcon } from '@heroicons/react/solid'
 import { AuthError } from 'firebase/auth'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
 
 interface Props {
   error: AuthError
@@ -9,6 +9,8 @@ const ERROR_CODE_MAPPING: { [key: string]: string } = {
   'auth/email-already-in-use': 'That email is already in use',
   'auth/missing-email': 'Please enter an email address',
   'auth/weak-password': 'Your password must be at least 6 characters',
+  'auth/wrong-password': 'Incorrect email or password.',
+  'auth/user-not-found': 'Incorrect email or password.',
 }
 
 const getErrorMessage = (error: AuthError) => {
@@ -18,15 +20,16 @@ const getErrorMessage = (error: AuthError) => {
 
 export default function ErrorNotification({ error }: Props) {
   return (
-    <div className="rounded-md bg-red-50 p-4">
+    <div className="rounded-md pt-4">
       <div className="flex">
         <div className="flex-shrink-0">
-          {/* <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" /> */}
+          <ExclamationTriangleIcon
+            className="h-5 w-5 text-red-500"
+            aria-hidden="true"
+          />
         </div>
-        <div className="ml-3">
-          <h3 className="text-sm font-medium text-red-800">
-            {getErrorMessage(error)}
-          </h3>
+        <div className="ml-1.5">
+          <h3 className="text-sm text-red-500">{getErrorMessage(error)}</h3>
         </div>
       </div>
     </div>

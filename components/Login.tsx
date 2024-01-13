@@ -49,7 +49,7 @@ const Login = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 sm:text-sm"
+                  className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 text-gray-600"
                 />
               </div>
             </div>
@@ -85,6 +85,9 @@ const Login = () => {
                   required
                   className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 sm:text-sm"
                 />
+                <div className="">
+                  {error && <ErrorNotification error={error} />}
+                </div>
               </div>
             </div>
 
@@ -92,7 +95,7 @@ const Login = () => {
               <button
                 disabled={isLoading}
                 type="submit"
-                className="transition w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 disabled:bg-indigo-300"
+                className="h-12 transition w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 disabled:bg-indigo-300"
               >
                 {isLoading ? <LoadingSpinner /> : 'Sign in'}
               </button>
