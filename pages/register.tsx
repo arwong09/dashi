@@ -1,20 +1,39 @@
+import { AuthError, createUserWithEmailAndPassword } from 'firebase/auth'
+import { FormEvent, useState } from 'react'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import ErrorNotification from '@/components/ErrorNotification'
-import useLogin from '../hooks/useLogin'
 import MaxWidthLayout from '@/layouts/MaxWidthLayout'
+import auth from '@/utils/initializeFirebase'
+import { useRouter } from 'next/router'
 
 export default function Register() {
-  const {
-    onEmailChange,
-    emailValue,
-    onPasswordChange,
-    passwordValue,
-    onSubmit,
-    isLoading,
-    error,
-  } = useLogin()
+  const [email, setEmail] = useState('')
+  const [fullName, setFullName] = useState('')
+  const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [submissionError, setSubmissionError] = useState<AuthError | null>(null)
+  const router = useRouter()
+
+  const onEmailChange = (e: FormEvent<HTMLInputElement>) =>
+    setEmail(e.currentTarget.value)
+  const onFullNameChange = (e: FormEvent<HTMLInputElement>) =>
+    setFullName(e.currentTarget.value)
+  const onPasswordChange = (e: FormEvent<HTMLInputElement>) =>
+    setPassword(e.currentTarget.value)
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setSubmissionError(null)
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => router.push('/dashboard'))
+      .catch((error) => {
+        setSubmissionError(error)
+      })
+      .finally(() => setIsLoading(false))
+  }
 
   return (
     <div className="bg-slate-50 h-full">
@@ -43,7 +62,7 @@ export default function Register() {
               <div className="mt-2.5">
                 <input
                   onChange={onEmailChange}
-                  value={emailValue}
+                  value={email}
                   id="email"
                   name="email"
                   type="email"
@@ -60,12 +79,12 @@ export default function Register() {
               </label>
               <div className="mt-2.5">
                 <input
-                  onChange={onEmailChange}
-                  value={emailValue}
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  onChange={onFullNameChange}
+                  value={fullName}
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
                   required
                   className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 text-gray-600"
                 />
@@ -85,7 +104,7 @@ export default function Register() {
               <div className="mt-2.5">
                 <input
                   onChange={onPasswordChange}
-                  value={passwordValue}
+                  value={password}
                   id="password"
                   name="password"
                   type="password"
@@ -94,14 +113,16 @@ export default function Register() {
                   className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 sm:text-sm"
                 />
                 <div className="">
-                  {error && <ErrorNotification error={error} />}
+                  {submissionError && (
+                    <ErrorNotification error={submissionError} />
+                  )}
                 </div>
               </div>
             </div>
 
             <div>
               <button
-                disabled={isLoading}
+                disabled={isLoading || !email || !password || !fullName}
                 type="submit"
                 className="h-12 transition w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 disabled:bg-indigo-300"
               >

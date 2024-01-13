@@ -5,9 +5,28 @@ import LoadingSpinner from './LoadingSpinner'
 import ErrorNotification from './ErrorNotification'
 
 const SignUp = () => {
-  const {
-    onEmailChange, emailValue, onPasswordChange, passwordValue, onSubmit, isLoading, error,
-  } = useSignup()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [submissionError, setSubmissionError] = useState<AuthError | null>(null)
+  const router = useRouter()
+
+  const onEmailChange = (e: FormEvent<HTMLInputElement>) =>
+    setEmail(e.currentTarget.value)
+  const onPasswordChange = (e: FormEvent<HTMLInputElement>) =>
+    setPassword(e.currentTarget.value)
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setSubmissionError(null)
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => router.push('/dashboard'))
+      .catch((error) => {
+        setSubmissionError(error)
+      })
+      .finally(() => setIsLoading(false))
+  }
 
   return (
     <div className="min-h-full flex flex-col justify-center pb-32 sm:px-6 lg:px-8 bg-gray-50">
@@ -24,10 +43,15 @@ const SignUp = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <h2 className="mb-8 text-2xl font-bold text-gray-700">Create your Dashi account</h2>
+          <h2 className="mb-8 text-2xl font-bold text-gray-700">
+            Create your Dashi account
+          </h2>
           <form className="space-y-6" onSubmit={onSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <div className="mt-1">
@@ -45,7 +69,10 @@ const SignUp = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <div className="mt-1">
@@ -75,7 +102,10 @@ const SignUp = () => {
               <div className="text-sm">
                 Have an account?
                 <Link href="/login">
-                  <button type="button" className="ml-1 text-indigo-600 hover:text-indigo-500">
+                  <button
+                    type="button"
+                    className="ml-1 text-indigo-600 hover:text-indigo-500"
+                  >
                     Sign in
                   </button>
                 </Link>
