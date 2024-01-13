@@ -7,8 +7,10 @@ interface CurrentUserContextInterface {
   user: User | null | undefined
 }
 
-export const CurrentUserContext = createContext<CurrentUserContextInterface>({
+const CurrentUserContext = createContext<CurrentUserContextInterface>({
   currentUser: undefined,
   user: undefined,
 })
+
 CurrentUserContext.displayName = 'CurrentUserContext'
+export default CurrentUserContext

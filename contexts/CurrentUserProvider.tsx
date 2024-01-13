@@ -4,7 +4,7 @@ import { User } from '@/utils/types'
 import { auth, firestore } from '@/utils/firebase'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { useRouter } from 'next/router'
-import { CurrentUserContext } from '@/contexts/CurrentUserContext'
+import CurrentUserContext from '@/contexts/CurrentUserContext'
 
 export default function CurrentUserProvider({
   children,
