@@ -1,13 +1,20 @@
 import HeaderLayout from '@/layouts/HeaderLayout'
 import MaxWidthLayout from '@/layouts/MaxWidthLayout'
 import Image from 'next/image'
-import Link from 'next/link'
-import NavBar from '@/components/NavBar'
+import NavBar from '@/components/NavBarUnauthed'
 import CTAButton from '@/components/CTAButton'
+import CurrentUserProvider from '@/contexts/CurrentUserProvider'
+import NavBarUnauthed from '@/components/NavBarUnauthed'
 
 export default function Home() {
   return (
-    <HeaderLayout header={<NavBar />}>
+    <HeaderLayout
+      header={
+        <CurrentUserProvider unauthedChildren={<NavBarUnauthed />}>
+          <NavBar />
+        </CurrentUserProvider>
+      }
+    >
       <MaxWidthLayout>
         <>
           <h2

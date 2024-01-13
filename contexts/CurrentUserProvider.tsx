@@ -6,11 +6,15 @@ import { doc, onSnapshot } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import CurrentUserContext from '@/contexts/CurrentUserContext'
 
+interface Props {
+  children: ReactNode
+  unauthedChildren: ReactNode
+}
+
 export default function CurrentUserProvider({
   children,
-}: {
-  children: ReactNode
-}) {
+  unauthedChildren,
+}: Props) {
   const router = useRouter()
   const [currentUser, setCurrentUser] = useState<
     FirebaseUser | null | undefined
@@ -39,13 +43,23 @@ export default function CurrentUserProvider({
     })
   }, [currentUser])
 
+  // firebase initializing
   if (currentUser === undefined || user === undefined) {
-    return null // firebase initializing
+    return (
+      <CurrentUserContext.Provider value={{ currentUser, user }}>
+        {unauthedChildren}
+      </CurrentUserContext.Provider>
+    )
   }
 
+  // logged out
   if (currentUser === null) {
     router.replace(`/`) // redirect to home page
-    return null
+    return (
+      <CurrentUserContext.Provider value={{ currentUser, user }}>
+        {unauthedChildren}
+      </CurrentUserContext.Provider>
+    )
   }
 
   return (
