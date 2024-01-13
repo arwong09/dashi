@@ -49,7 +49,7 @@ const Login = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 sm:text-sm"
+                  className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 sm:text-sm"
                 />
               </div>
             </div>
@@ -66,7 +66,7 @@ const Login = () => {
                   <div className="text-sm">
                     <Link
                       href="/reset-password"
-                      className="text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 rounded"
+                      className="transition text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 rounded"
                     >
                       Forgot your password?
                     </Link>
@@ -83,7 +83,7 @@ const Login = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 sm:text-sm"
+                  className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 sm:text-sm"
                 />
               </div>
             </div>
@@ -92,7 +92,7 @@ const Login = () => {
               <button
                 disabled={isLoading}
                 type="submit"
-                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 disabled:bg-indigo-300"
+                className="transition w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 disabled:bg-indigo-300"
               >
                 {isLoading ? <LoadingSpinner /> : 'Sign in'}
               </button>
@@ -100,7 +100,7 @@ const Login = () => {
                 Don&apos;t have an account?
                 <Link
                   href="signup"
-                  className="ml-1 text-indigo-500 hover:text-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 rounded"
+                  className="transition ml-1 text-indigo-500 hover:text-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 rounded"
                 >
                   Sign up
                 </Link>
