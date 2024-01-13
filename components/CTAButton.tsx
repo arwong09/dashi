@@ -1,42 +1,28 @@
 import { ReactNode } from 'react'
 import Link from 'next/link'
+import { customConfig } from '@/tailwind.config'
 
-interface BaseProps {
-  bg: string
+interface LinkProps {
   children: ReactNode
-}
-
-interface LinkProps extends BaseProps {
   href: string
   onClick?: () => void
   disabled?: never
 }
 
-interface ButtonProps extends BaseProps {
+interface ButtonProps {
+  children: ReactNode
   onClick: () => void
   disabled?: boolean
   href?: never
 }
 
-const getBgClassNames = (bg: string) => {
-  const classes = bg.split(' ')
-  return (
-    bg +
-    ' ' +
-    classes.map((c) => `hover:${c}/90`).join(' ') +
-    ' ' +
-    classes.map((c) => `disabled:${c}/30`).join(' ')
-  )
-}
-
 export default function CTAButton({
-  bg,
   children,
   disabled,
   href,
   onClick,
 }: LinkProps | ButtonProps) {
-  const className = `rounded-xl text-white font-semibold sm:text-lg px-20 sm:px-32 py-4 ${getBgClassNames(bg)}`
+  const className = `${customConfig.ctaBgColor} rounded-xl text-white font-semibold sm:text-lg px-20 sm:px-32 py-4`
 
   return href === undefined ? (
     <button onClick={onClick} className={className} disabled={disabled}>

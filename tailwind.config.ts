@@ -1,18 +1,16 @@
 import type { Config } from 'tailwindcss'
 import { SafelistConfig } from 'tailwindcss/types/config'
 
-const safelistColors = ['purple-700', 'fuchsia-600']
-const safelist = [] as SafelistConfig[]
+export const customConfig = {
+  textButtonColor: 'text-sky-500 hover:text-sky-400',
+  ctaBgColor:
+    'bg-gradient-to-b to-purple-700 from-fuchsia-600 hover:to-purple-700/90 hover:from-fuchsia-600/90 disabled:from-purple-700/30 disabled:to-fuchsia-600/30',
+}
 
-safelistColors.map((color) => {
-  safelist.push(`bg-${color}`)
-  safelist.push(`hover:bg-${color}/90`)
-  safelist.push(`hover:from-${color}/90`)
-  safelist.push(`hover:to-${color}/90`)
-  safelist.push(`disabled:bg-${color}/30`)
-  safelist.push(`disabled:from-${color}/30`)
-  safelist.push(`disabled:to-${color}/30`)
-})
+const safelist = [
+  ...customConfig.ctaBgColor.split(' '),
+  ...customConfig.textButtonColor.split(' '),
+]
 
 const config: Config = {
   content: [

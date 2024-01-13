@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ReactNode, useContext } from 'react'
 import Image from 'next/image'
+import TextButton from './TextButton'
 
 export default function NavBar() {
   const { currentUser } = useContext(CurrentUserContext)
@@ -32,9 +33,7 @@ export default function NavBar() {
         </Link>
       )}{' '}
       {router.pathname === '/' && currentUser !== null && (
-        <Link href="/tags" className="text-sky-500 hover:text-sky-400">
-          Dashboard
-        </Link>
+        <TextButton href="/tags">Dashboard</TextButton>
       )}
       {currentUser !== null && router.pathname !== '/' && (
         <button

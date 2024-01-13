@@ -30,12 +30,7 @@ export default function Home() {
             />
           </div>
           <div className="mt-10 sm:mt-16 flex justify-center mb-12">
-            <CTAButton
-              bg="bg-gradient-to-b to-purple-700 from-fuchsia-600"
-              href="qrgems.com"
-            >
-              Buy on Amazon
-            </CTAButton>
+            <CTAButton href="qrgems.com">Buy on Amazon</CTAButton>
           </div>
         </>
       </MaxWidthLayout>
