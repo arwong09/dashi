@@ -1,11 +1,11 @@
 import NextImage from 'next/image'
 import Link from 'next/link'
-import LoadingSpinner from './LoadingSpinner'
-import ErrorNotification from './ErrorNotification'
+import LoadingSpinner from '@/components/LoadingSpinner'
+import ErrorNotification from '@/components/ErrorNotification'
 import useLogin from '../hooks/useLogin'
 import MaxWidthLayout from '@/layouts/MaxWidthLayout'
 
-const Login = () => {
+export default function Register() {
   const {
     onEmailChange,
     emailValue,
@@ -33,12 +33,30 @@ const Login = () => {
         </div>
         <div className="w-full bg-white rounded-md shadow-xl px-16 py-14">
           <h1 className="font-semibold text-2xl text-slate-700 mb-5">
-            Sign in to your account
+            Create your Dashi account
           </h1>
-          <form className="space-y-8" onSubmit={onSubmit}>
+          <form className="space-y-6" onSubmit={onSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm text-slate-700">
                 Email
+              </label>
+              <div className="mt-2.5">
+                <input
+                  onChange={onEmailChange}
+                  value={emailValue}
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 text-gray-600"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm text-slate-700">
+                Full name
               </label>
               <div className="mt-2.5">
                 <input
@@ -62,16 +80,6 @@ const Login = () => {
                 >
                   Password
                 </label>
-                <div className="flex items-center justify-end">
-                  <div className="text-sm">
-                    <Link
-                      href="/reset-password"
-                      className="transition text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 rounded"
-                    >
-                      Forgot your password?
-                    </Link>
-                  </div>
-                </div>
               </div>
 
               <div className="mt-2.5">
@@ -97,15 +105,15 @@ const Login = () => {
                 type="submit"
                 className="h-12 transition w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 disabled:bg-indigo-300"
               >
-                {isLoading ? <LoadingSpinner /> : 'Sign in'}
+                {isLoading ? <LoadingSpinner /> : 'Create account'}
               </button>
               <div className="mt-6 ml-2 text-sm flex justify-center w-full text-slate-700">
-                Don&apos;t have an account?
+                Have an account?
                 <Link
-                  href="/register"
+                  href="/login"
                   className="transition ml-1 text-indigo-500 hover:text-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 rounded"
                 >
-                  Sign up
+                  Sign in
                 </Link>
               </div>
             </div>
@@ -115,5 +123,3 @@ const Login = () => {
     </div>
   )
 }
-
-export default Login

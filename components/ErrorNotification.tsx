@@ -9,8 +9,8 @@ const ERROR_CODE_MAPPING: { [key: string]: string } = {
   'auth/email-already-in-use': 'That email is already in use',
   'auth/missing-email': 'Please enter an email address',
   'auth/weak-password': 'Your password must be at least 6 characters',
-  'auth/wrong-password': 'Incorrect email or password.',
-  'auth/user-not-found': 'Incorrect email or password.',
+  'auth/wrong-password': 'Incorrect email or password',
+  'auth/user-not-found': 'Incorrect email or password',
 }
 
 const getErrorMessage = (error: AuthError) => {
