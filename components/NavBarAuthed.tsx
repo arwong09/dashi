@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import TextButton from './TextButton'
-import SecondaryButton from './SecondarButton'
+import SecondaryButton from './SecondaryButton'
 
 export default function NavBarAuthed() {
   const router = useRouter()
