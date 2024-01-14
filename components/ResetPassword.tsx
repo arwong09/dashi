@@ -2,13 +2,39 @@ import NextImage from 'next/image'
 import Link from 'next/link'
 import LoadingSpinner from './LoadingSpinner'
 import ErrorNotification from './ErrorNotification'
-import useResetPassword from '../hooks/useResetPassword'
-import SuccessNotification from './SuccessNotification'
+import SuccessNotification from '@/components/SuccessNotification'
+import { FormEvent, useState } from 'react'
+import { sendPasswordResetEmail, AuthError } from 'firebase/auth'
+import auth from '@/utils/initializeFirebase'
 
 const ResetPassword = () => {
-  const {
-    onEmailChange, emailValue, onSubmit, isLoading, error, successMessage,
-  } = useResetPassword()
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
+  const [submissionError, setSubmissionError] = useState<AuthError | null>(null)
+
+  const onEmailChange = (e: FormEvent<HTMLInputElement>) =>
+    setEmail(e.currentTarget.value)
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setSuccessMessage('')
+    setSubmissionError(null)
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        setSuccessMessage('Password reset email sent')
+      })
+      .catch((error) => {
+        if (error.code === 'auth/user-not-found') {
+          setSuccessMessage('Password reset email sent')
+        } else {
+          setSubmissionError(error)
+        }
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }
 
   return (
     <div className="min-h-full flex flex-col justify-center pb-32 sm:px-6 lg:px-8 bg-gray-50">
@@ -25,17 +51,25 @@ const ResetPassword = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <h2 className="mb-4 text-2xl font-bold text-gray-700">Reset your password</h2>
-          <p className="text-sm mb-6 text-gray-600">Enter the email address associated with your account and we&apos;ll send you a link to reset your password</p>
+          <h2 className="mb-4 text-2xl font-bold text-gray-700">
+            Reset your password
+          </h2>
+          <p className="text-sm mb-6 text-gray-600">
+            Enter the email address associated with your account and we&apos;ll
+            send you a link to reset your password
+          </p>
           <form className="space-y-6" onSubmit={onSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <div className="mt-1">
                 <input
                   onChange={onEmailChange}
-                  value={emailValue}
+                  value={email}
                   id="email"
                   name="email"
                   type="email"
@@ -54,14 +88,19 @@ const ResetPassword = () => {
                 {isLoading ? <LoadingSpinner /> : 'Reset password'}
               </button>
               <div className="mt-6 ml-2 text-sm flex justify-center w-full text-gray-700">
-                <Link href="signup"><a className="text-indigo-600 hover:text-indigo-500">Return to sign in</a></Link>
+                <Link
+                  href="signup"
+                  className="text-indigo-600 hover:text-indigo-500"
+                >
+                  Return to sign in
+                </Link>
               </div>
             </div>
           </form>
         </div>
 
         <div className="mt-6">
-          {error && <ErrorNotification error={error} />}
+          {submissionError && <ErrorNotification error={submissionError} />}
           {successMessage && <SuccessNotification message={successMessage} />}
         </div>
       </div>
