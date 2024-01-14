@@ -6,10 +6,9 @@ import LoadingSpinner from '@/components/LoadingSpinner'
 import ErrorNotification from '@/components/ErrorNotification'
 import MaxWidthLayout from '@/layouts/MaxWidthLayout'
 import auth from '@/utils/initializeFirebase'
-import { useRouter } from 'next/router'
 import SuccessNotification from '@/components/SuccessNotification'
 
-export default function ResetPassword() {
+export default function ResetPasswordPage() {
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [successMessage, setSuccessMessage] = useState('')

@@ -8,7 +8,7 @@ import MaxWidthLayout from '@/layouts/MaxWidthLayout'
 import auth from '@/utils/initializeFirebase'
 import { useRouter } from 'next/router'
 
-export default function Register() {
+export default function RegisterPage() {
   const [email, setEmail] = useState('')
   const [fullName, setFullName] = useState('')
   const [password, setPassword] = useState('')
