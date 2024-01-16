@@ -1,6 +1,2 @@
-import HeaderLayout from '@/layouts/HeaderLayout';
-import MaxWidthLayout from '@/layouts/MaxWidthLayout';
-export declare const layouts: {
-    HeaderLayout: typeof HeaderLayout;
-    MaxWidthLayout: typeof MaxWidthLayout;
-};
+import * as test from '@/layouts';
+export default test;
