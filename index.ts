@@ -1,5 +1,3 @@
-import HeaderLayout from '@/layouts/HeaderLayout'
+export * from '@/layouts/HeaderLayout'
+export * from '@/layouts/MaxWidthLayout'
 
-export const layouts = {
-    HeaderLayout
-}
