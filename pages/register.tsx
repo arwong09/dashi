@@ -1,4 +1,4 @@
-import { AuthError, signInWithEmailAndPassword } from 'firebase/auth'
+import { AuthError, createUserWithEmailAndPassword } from 'firebase/auth'
 import { FormEvent, useState } from 'react'
 import NextImage from 'next/image'
 import Link from 'next/link'
@@ -8,8 +8,9 @@ import MaxWidthLayout from '@/layouts/MaxWidthLayout'
 import auth from '@/utils/initializeFirebase'
 import { useRouter } from 'next/router'
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [email, setEmail] = useState('')
+  const [fullName, setFullName] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [submissionError, setSubmissionError] = useState<AuthError | null>(null)
@@ -17,6 +18,8 @@ export default function LoginPage() {
 
   const onEmailChange = (e: FormEvent<HTMLInputElement>) =>
     setEmail(e.currentTarget.value)
+  const onFullNameChange = (e: FormEvent<HTMLInputElement>) =>
+    setFullName(e.currentTarget.value)
   const onPasswordChange = (e: FormEvent<HTMLInputElement>) =>
     setPassword(e.currentTarget.value)
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -24,7 +27,7 @@ export default function LoginPage() {
     setIsLoading(true)
     setSubmissionError(null)
 
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then(() => router.push('/dashboard'))
       .catch((error) => {
         setSubmissionError(error)
@@ -49,9 +52,9 @@ export default function LoginPage() {
         </div>
         <div className="w-full bg-white rounded-md shadow-xl px-16 py-14">
           <h1 className="font-semibold text-2xl text-slate-700 mb-5">
-            Sign in to your account
+            Create your Dashi account
           </h1>
-          <form className="space-y-8" onSubmit={onSubmit}>
+          <form className="space-y-6" onSubmit={onSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm text-slate-700">
                 Email
@@ -71,6 +74,24 @@ export default function LoginPage() {
             </div>
 
             <div>
+              <label htmlFor="email" className="block text-sm text-slate-700">
+                Full name
+              </label>
+              <div className="mt-2.5">
+                <input
+                  onChange={onFullNameChange}
+                  value={fullName}
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  className="transition appearance-none block w-full px-3 py-3 border border-zinc-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 text-gray-600"
+                />
+              </div>
+            </div>
+
+            <div>
               <div className="flex justify-between w-full">
                 <label
                   htmlFor="password"
@@ -78,16 +99,6 @@ export default function LoginPage() {
                 >
                   Password
                 </label>
-                <div className="flex items-center justify-end">
-                  <div className="text-sm">
-                    <Link
-                      href="/reset-password"
-                      className="transition text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 rounded"
-                    >
-                      Forgot your password?
-                    </Link>
-                  </div>
-                </div>
               </div>
 
               <div className="mt-2.5">
@@ -111,19 +122,19 @@ export default function LoginPage() {
 
             <div>
               <button
-                disabled={isLoading || !email || !password}
+                disabled={isLoading || !email || !password || !fullName}
                 type="submit"
                 className="h-12 transition w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 disabled:bg-indigo-300"
               >
-                {isLoading ? <LoadingSpinner /> : 'Sign in'}
+                {isLoading ? <LoadingSpinner /> : 'Create account'}
               </button>
               <div className="mt-6 ml-2 text-sm flex justify-center w-full text-slate-700">
-                Don&apos;t have an account?
+                Have an account?
                 <Link
-                  href="/register"
+                  href="/login"
                   className="transition ml-1 text-indigo-500 hover:text-indigo-600 focus:outline-none focus:ring-indigo-200/80 focus:ring-4 focus:border-indigo-300 rounded"
                 >
-                  Sign up
+                  Sign in
                 </Link>
               </div>
             </div>
