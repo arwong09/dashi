@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss'
-import { SafelistConfig } from 'tailwindcss/types/config'
 
 export const customConfig = {
   textButtonColor: 'text-sky-500 hover:text-sky-400',
