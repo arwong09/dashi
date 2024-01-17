@@ -1,9 +1,9 @@
 {
   "name": "dashi",
-  "version": "2.0.9",
+  "version": "2.1.0",
   "private": true,
   "exports": {
-    ".": "./dist/components/index.js"
+    "./components": "./dist/components/index.js"
   },
   "scripts": {
     "new": "/scripts/new.sh",
@@ -13,7 +13,7 @@
     "lint": "next lint"
   },
   "files": [
-    "components/",
+    "components/index.js",
     "contexts/",
     "utils/"
   ],
