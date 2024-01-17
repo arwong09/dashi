@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import { Config } from 'tailwindcss'
 
 export const customConfig = {
   textButtonColor: 'text-sky-500 hover:text-sky-400',
