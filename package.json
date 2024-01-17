@@ -1,8 +1,7 @@
 {
   "name": "dashi",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "private": true,
-  "type": "module",
   "exports": {
     ".": "./dist/index.js"
   },
