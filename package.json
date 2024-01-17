@@ -1,9 +1,12 @@
 {
   "name": "dashi",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "private": true,
   "exports": {
-    "./components/*": "./dist/components/*.js"
+    "./components/*": "./dist/components/*.js",
+    "./layouts/*": "./dist/layouts`/*.js",
+    "./contexts/*": "./dist/contexts/*.js",
+    "./utils/*": "./dist/utils/*.js"
   },
   "files": [
     "src/components",
