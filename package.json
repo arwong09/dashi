@@ -1,9 +1,9 @@
 {
   "name": "dashi",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "private": true,
   "exports": {
-    "./components": "./dist/components/index.js"
+    "./components/": "./dist/components/"
   },
   "scripts": {
     "new": "/scripts/new.sh",
@@ -12,11 +12,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "files": [
-    "components/index.js",
-    "contexts/",
-    "utils/"
-  ],
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "next": "14.0.4",
