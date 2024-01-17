@@ -1,9 +1,9 @@
 {
   "name": "dashi",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": true,
   "exports": {
-    "./components/": "./dist/components/"
+    "./components/*": "./dist/components/*.js"
   },
   "scripts": {
     "new": "/scripts/new.sh",
