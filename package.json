@@ -1,6 +1,6 @@
 {
   "name": "dashi",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "private": true,
   "type": "module",
   "exports": {
@@ -9,7 +9,7 @@
   "scripts": {
     "new": "/scripts/new.sh",
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx babel src --out-dir dist   --extensions .ts,.js,.tsx,.jsx,.cjs,.mjs   --presets=@babel/preset-typescript,@babel/preset-env,@babel/preset-react",
     "start": "next start",
     "lint": "next lint"
   },
@@ -25,6 +25,11 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

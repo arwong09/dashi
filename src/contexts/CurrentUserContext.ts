@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 import { User as FirebaseUser } from 'firebase/auth'
-import { User } from '@/utils/types'
+import { User } from '@/src/utils/types'
 
 interface CurrentUserContextInterface {
   currentUser: FirebaseUser | null | undefined

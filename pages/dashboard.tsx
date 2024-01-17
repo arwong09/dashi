@@ -1,20 +1,20 @@
 import { Inter } from 'next/font/google'
-import HeaderLayout from '@/layouts/HeaderLayout'
+import HeaderLayout from '@/src/layouts/HeaderLayout'
 import { useContext, useEffect, useState } from 'react'
-import CurrentUserContext from '@/contexts/CurrentUserContext'
+import CurrentUserContext from '@/src/contexts/CurrentUserContext'
 
 import { collection, onSnapshot, query, where } from 'firebase/firestore'
-import { firestore } from '@/utils/firebase'
-import { Tag } from '@/utils/types'
+import { firestore } from '@/src/utils/firebase'
+import { Tag } from '@/src/utils/types'
 
 import Link from 'next/link'
 import Image from 'next/image'
 
-import NavBar from '@/components/NavBarUnauthed'
-import MaxWidthLayout from '@/layouts/MaxWidthLayout'
-import CurrentUserProvider from '@/contexts/CurrentUserProvider'
-import NavBarAuthed from '@/components/NavBarAuthed'
-import NavBarUnauthed from '@/components/NavBarUnauthed'
+import NavBar from '@/src/components/NavBarUnauthed'
+import MaxWidthLayout from '@/src/layouts/MaxWidthLayout'
+import CurrentUserProvider from '@/src/contexts/CurrentUserProvider'
+import NavBarAuthed from '@/src/components/NavBarAuthed'
+import NavBarUnauthed from '@/src/components/NavBarUnauthed'
 
 export default function DashboardPage() {
   const { currentUser, user } = useContext(CurrentUserContext)

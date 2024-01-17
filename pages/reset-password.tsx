@@ -2,11 +2,11 @@ import { sendPasswordResetEmail, AuthError } from 'firebase/auth'
 import { FormEvent, useState } from 'react'
 import NextImage from 'next/image'
 import Link from 'next/link'
-import LoadingSpinner from '@/components/LoadingSpinner'
-import ErrorNotification from '@/components/ErrorNotification'
-import MaxWidthLayout from '@/layouts/MaxWidthLayout'
-import auth from '@/utils/initializeFirebase'
-import SuccessNotification from '@/components/SuccessNotification'
+import LoadingSpinner from '@/src/components/LoadingSpinner'
+import ErrorNotification from '@/src/components/ErrorNotification'
+import MaxWidthLayout from '@/src/layouts/MaxWidthLayout'
+import auth from '@/src/utils/initializeFirebase'
+import SuccessNotification from '@/src/components/SuccessNotification'
 
 export default function ResetPasswordPage() {
   const [email, setEmail] = useState('')

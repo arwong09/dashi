@@ -9,5 +9,5 @@ Object.defineProperty(exports, "CTAButton", {
     return _CTAButton["default"];
   }
 });
-var _CTAButton = _interopRequireDefault(require("./components/CTAButton"));
+var _CTAButton = _interopRequireDefault(require("./CTAButton"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

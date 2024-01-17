@@ -1,10 +1,10 @@
-import HeaderLayout from '@/layouts/HeaderLayout'
-import MaxWidthLayout from '@/layouts/MaxWidthLayout'
+import HeaderLayout from '@/src/layouts/HeaderLayout'
+import MaxWidthLayout from '@/src/layouts/MaxWidthLayout'
 import Image from 'next/image'
-import NavBar from '@/components/NavBarUnauthed'
-import CTAButton from '@/components/CTAButton'
-import CurrentUserProvider from '@/contexts/CurrentUserProvider'
-import NavBarUnauthed from '@/components/NavBarUnauthed'
+import NavBar from '@/src/components/NavBarUnauthed'
+import CTAButton from '@/src/components/CTAButton'
+import CurrentUserProvider from '@/src/contexts/CurrentUserProvider'
+import NavBarUnauthed from '@/src/components/NavBarUnauthed'
 
 export default function Home() {
   return (

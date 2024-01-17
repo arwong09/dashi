@@ -1,10 +1,10 @@
 import { User as FirebaseUser } from 'firebase/auth'
 import { ReactNode, useEffect, useState } from 'react'
-import { User } from '@/utils/types'
-import { auth, firestore } from '@/utils/firebase'
+import { User } from '@/src/utils/types'
+import { auth, firestore } from '@/src/utils/firebase'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { useRouter } from 'next/router'
-import CurrentUserContext from '@/contexts/CurrentUserContext'
+import CurrentUserContext from '@/src/contexts/CurrentUserContext'
 
 interface Props {
   children: ReactNode
