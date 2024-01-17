@@ -16,7 +16,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "outDir": "./src",
+    "outDir": "./src"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "**/*.d.ts"]
