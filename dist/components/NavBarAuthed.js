@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = NavBarAuthed;
-var _firebase = require("@/src/utils/firebase");
+var _firebase = require("../utils/firebase");
 var _link = _interopRequireDefault(require("next/link"));
 var _router = require("next/router");
 var _image = _interopRequireDefault(require("next/image"));

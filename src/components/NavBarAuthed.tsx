@@ -1,4 +1,4 @@
-import { auth } from '@/src/utils/firebase'
+import { auth } from '../utils/firebase'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
