@@ -1,6 +1,11 @@
 import { ReactNode } from 'react'
 import Link from 'next/link'
-import { customConfig } from '@/tailwind.config'
+
+const customConfig = {
+  textButtonColor: 'text-sky-500 hover:text-sky-400',
+  ctaBgColor:
+    'bg-gradient-to-b to-purple-700 from-fuchsia-600 hover:to-purple-700/90 hover:from-fuchsia-600/90 disabled:from-purple-700/30 disabled:to-fuchsia-600/30',
+}
 
 interface LinkProps {
   children: ReactNode
