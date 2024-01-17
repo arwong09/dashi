@@ -1,6 +1,6 @@
 {
   "name": "dashi",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "private": true,
   "exports": {
     "./components/*": "./dist/components/*.js",
