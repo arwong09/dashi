@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = ErrorNotification;
 var _solid = require("@heroicons/react/24/solid");
+var _jsxRuntime = require("react/jsx-runtime");
 var ERROR_CODE_MAPPING = {
   'auth/email-already-in-use': 'That email is already in use',
   'auth/missing-email': 'Please enter an email address',
@@ -19,18 +20,23 @@ var getErrorMessage = function getErrorMessage(error) {
 };
 function ErrorNotification(_ref2) {
   var error = _ref2.error;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "rounded-md pt-4"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex-shrink-0"
-  }, /*#__PURE__*/React.createElement(_solid.ExclamationTriangleIcon, {
-    className: "h-5 w-5 text-red-500",
-    "aria-hidden": "true"
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "ml-1.5"
-  }, /*#__PURE__*/React.createElement("h3", {
-    className: "text-sm text-red-500"
-  }, getErrorMessage(error)))));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    className: "rounded-md pt-4",
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: "flex",
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "flex-shrink-0",
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_solid.ExclamationTriangleIcon, {
+          className: "h-5 w-5 text-red-500",
+          "aria-hidden": "true"
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "ml-1.5",
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h3", {
+          className: "text-sm text-red-500",
+          children: getErrorMessage(error)
+        })
+      })]
+    })
+  });
 }

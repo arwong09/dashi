@@ -1,6 +1,6 @@
 {
   "name": "dashi",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "private": true,
   "exports": {
     ".": "./dist/index.js"
@@ -8,7 +8,7 @@
   "scripts": {
     "new": "/scripts/new.sh",
     "dev": "next dev",
-    "build": "npx babel src --out-dir dist   --extensions .ts,.js,.tsx,.jsx,.cjs,.mjs   --presets=@babel/preset-typescript,@babel/preset-env,@babel/preset-react",
+    "build": "npx babel src --out-dir dist --extensions .ts,.js,.tsx,.jsx,.cjs,.mjs",
     "start": "next start",
     "lint": "next lint"
   },

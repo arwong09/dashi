@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = CTAButton;
 var _link = _interopRequireDefault(require("next/link"));
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var customConfig = {
   textButtonColor: 'text-sky-500 hover:text-sky-400',
@@ -16,13 +17,15 @@ function CTAButton(_ref) {
     href = _ref.href,
     onClick = _ref.onClick;
   var className = "".concat(customConfig.ctaBgColor, " rounded-xl text-white font-semibold sm:text-lg px-20 sm:px-32 py-4");
-  return href === undefined ? /*#__PURE__*/React.createElement("button", {
+  return href === undefined ? /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     onClick: onClick,
     className: className,
-    disabled: disabled
-  }, children) : /*#__PURE__*/React.createElement(_link["default"], {
+    disabled: disabled,
+    children: children
+  }) : /*#__PURE__*/(0, _jsxRuntime.jsx)(_link["default"], {
     onClick: onClick,
     href: href,
-    className: className
-  }, children);
+    className: className,
+    children: children
+  });
 }
